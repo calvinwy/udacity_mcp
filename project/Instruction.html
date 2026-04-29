@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Instructions & Rubric</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        h1, h2, h3 {
+            color: #111;
+            margin-top: 1.5em;
+        }
+        h1 { border-bottom: 2px solid #eaecef; padding-bottom: 0.3em; }
+        
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            border: 1px solid #dfe2e5;
+            overflow-x: auto;
+        }
+        
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            background-color: #f6f8fa;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-size: 85%;
+        }
+
+        pre code {
+            padding: 0;
+            background-color: transparent;
+            border: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border: 1px solid #dfe2e5;
+            vertical-align: top;
+        }
+        th { background-color: #f6f8fa; font-weight: 600; width: 35%; }
+        
+        .note {
+            background-color: #fffbdd;
+            border: 1px solid #d4a017;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        .suggestions {
+            border: 2px solid #a2c4e6;
+            padding: 25px;
+            margin-top: 40px;
+            background-color: #fcfdfe;
+        }
+        .suggestions h3 { margin-top: 0; color: #2c3e50; }
+        
+        ul, ol { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Project Rubric</h1>
+    <p>On the following pages, you'll find the rubric that will be used to assess your project. Please check the rubric while completing the project, and before submission.</p>
+
+    <h2>Project Starter Files</h2>
+    <p>If working locally, you can download the starter files from the workspace. Just select the files and right click, choose "download file".</p>
+    <p>To complete the project, your scraper server needs to talk to the Firecrawl service. This requires a free API key.</p>
+    
+    <ol>
+        <li><strong>Go to the Sign-up Page:</strong> Use this link to create a new, free account: <a href="https://www.firecrawl.dev/signin">https://www.firecrawl.dev/signin</a>. You can sign up quickly using a Google, GitHub, or email account.</li>
+        <li><strong>Find Your API Key:</strong> Once you have signed in, you will be on your dashboard.
+            <ul>
+                <li>On the left-hand menu, click on the "API Keys" section.</li>
+                <li>You will see your first API key already created for you, labeled "Default".</li>
+            </ul>
+        </li>
+        <li><strong>Copy Your Key:</strong> Copy the API key (it will be a long string that starts with <code>fc-...</code>).</li>
+        <li><strong>Add the Key to Your Project:</strong> Open the <code>.env</code> file in your project folder. Paste your Firecrawl API key directly after <code>FIRECRAWL_API_KEY=</code>. Your <code>.env</code> file should look like this (but with your real keys):</li>
+    </ol>
+
+    <pre><code>FIRECRAWL_API_KEY=fc-your-firecrawl-key-goes-here</code></pre>
+
+    <p>That's it! Once your key is in the <code>.env</code> file, your <code>starter_server.py</code> will be able to connect to Firecrawl and scrape the websites.</p>
+
+    <hr>
+
+    <h1>Project Instructions</h1>
+    <p>Here are the step-by-step instructions to guide you through completing this project. We'll build the server's tools first, then wire up the client to use them.</p>
+
+    <h2>Step 0: Prerequisites (Your Environment)</h2>
+    <p>Before you write any code, let's make sure your environment is ready.</p>
+    
+    <ol>
+        <li><strong>Set API Keys:</strong> Create a new file in the root of your project folder named <code>.env</code>. This file is used to store your secret API keys. Open it and add your keys from Anthropic and Firecrawl:
+            <pre><code>ANTHROPIC_API_KEY=your-anthropic-key-goes-here
+FIRECRAWL_API_KEY=your-firecrawl-key-goes-here</code></pre>
+        </li>
+        <li><strong>Configure Your Server Path:</strong> Open the <code>server_config.json</code> file. We need to tell the client how to find and run your <code>starter_server.py</code> file. Find the <code>"llm_inference"</code> server configuration and change the <code>"args"</code> to point to the <code>starter_server.py</code> file you will be editing:
+            <pre><code>"llm_inference": {
+  "command": "uv",
+  "args": ["run", "starter_server.py"]
+}</code></pre>
+        </li>
+    </ol>
+
+    <h2>Step 1: Build Your Scraper Server (<code>starter_server.py</code>)</h2>
+    <p>Open <code>starter_server.py</code>. This file will become your custom MCP server that scrapes websites. We need to complete the two functions marked as tools.</p>
+
+    <h3>Task 1.1: Complete the <code>scrape_websites</code> tool</h3>
+    <p>This function will use Firecrawl to scrape a list of websites, save their content to files, and update a central <code>scraped_metadata.json</code> file. Inside the <code>scrape_websites</code> function, replace the <code># continue your solution here ...</code> comment with logic to do the following:</p>
+
+    <ol>
+        <li><strong>Load Existing Metadata:</strong> Try to open and load <code>scraped_metadata.json</code>. If it doesn't exist or is empty, initialize <code>scraped_metadata</code> as an empty dictionary <code>{}</code>.</li>
+        <li><strong>Initialize:</strong> Create a list called <code>successful_scrapes</code> to hold the names of providers we successfully scrape.</li>
+        <li><strong>Loop Through Websites:</strong> Iterate over the <code>websites</code> dictionary (which contains <code>provider_name</code> -> <code>url</code> pairs).</li>
+        <li><strong>Inside the Loop (for each website):</strong>
+            <ul>
+                <li>Wrap the scraping logic in a <code>try...except</code> block to handle any errors.</li>
+                <li>Log that you are starting to scrape (e.g., <code>logger.info(f"Scraping {provider_name}: {url}")</code>).</li>
+                <li><strong>Call Firecrawl:</strong> <code>scrape_result = app.scrape(url, formats=formats).model_dump()</code>.</li>
+                <li>Create a <code>metadata</code> dictionary for this provider, including its name, URL, domain, and scrape time.</li>
+                <li><strong>If Successful:</strong> Check if <code>scrape_result.get('success', False)</code> is true.
+                    <ul>
+                        <li>Save Content: Loop through the <code>formats</code> (e.g., 'markdown', 'html'). For each format, get the content from <code>scrape_result</code>, create a filename (like <code>f"{provider_name}_{format_type}.txt"</code>), and write the content to a file in the <code>SCRAPE_DIR</code>.</li>
+                        <li>Update Metadata: Add the filenames to your <code>metadata</code> dictionary (under a <code>content_files</code> key). Add the page <code>title</code> and <code>description</code> from the scrape result.</li>
+                        <li>Add the <code>provider_name</code> to your <code>successful_scrapes</code> list.</li>
+                    </ul>
+                </li>
+                <li><strong>If Failed:</strong> Log the error from <code>scrape_result</code>.</li>
+                <li><strong>Finally:</strong> Add your <code>metadata</code> dictionary to the main <code>scraped_metadata</code> dictionary (e.g., <code>scraped_metadata[provider_name] = metadata</code>).</li>
+            </ul>
+        </li>
+        <li><strong>After the Loop:</strong>
+            <ul>
+                <li>Write the entire <code>scraped_metadata</code> dictionary back to the <code>scraped_metadata.json</code> file.</li>
+                <li>Log the final results and return the <code>successful_scrapes</code> list.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h3>Task 1.2: Complete the <code>extract_scraped_info</code> tool</h3>
+    <p>This function will read the data you just saved. Inside the <code>extract_scraped_info</code> function, replace the <code># continue your response here ...</code> comment with logic to do the following:</p>
+
+    <ol>
+        <li><strong>Load Metadata:</strong> Open and load the <code>scraped_metadata.json</code> file inside a <code>try...except</code> block.</li>
+        <li><strong>Find a Match:</strong> Loop through the <code>scraped_metadata</code> dictionary. For each <code>provider_name</code> and <code>metadata</code> entry, check if your <code>identifier</code> matches any of these:
+            <ul>
+                <li>The <code>provider_name</code></li>
+                <li>The <code>metadata.get('url', '')</code></li>
+                <li>The <code>metadata.get('domain', '')</code></li>
+            </ul>
+        </li>
+        <li><strong>If a Match is Found:</strong>
+            <ul>
+                <li>Make a copy of the <code>metadata</code> (e.g., <code>result = metadata.copy()</code>).</li>
+                <li>Check if the metadata has <code>'content_files'</code>. If it does, create a new <code>result['content']</code> dictionary.</li>
+                <li>Loop through the <code>content_files</code> (e.g., <code>format_type</code>, <code>filename</code>).</li>
+                <li>Read the content from the file (e.g., <code>os.path.join(SCRAPE_DIR, filename)</code>) and store it in <code>result['content'][format_type]</code>.</li>
+                <li>Return the <code>result</code> dictionary as a formatted JSON string: <code>return json.dumps(result, indent=2)</code>.</li>
+            </ul>
+        </li>
+        <li><strong>If No Match/Error:</strong> If the loop finishes with no match or you hit an error, return a string message like <code>f"There's no saved information related to identifier '{identifier}'."</code></li>
+    </ol>
+
+    <h2>Step 2: Build Your Client Application (<code>starter_client.py</code>)</h2>
+    <p>Open <code>starter_client.py</code>. This is your "manager" app that will talk to your server. We just need to fill in the sections marked <code># complete</code>.</p>
+
+    <ol>
+        <li><strong>In <code>Configuration.load_config</code>:</strong>
+            <ul>
+                <li>Implement the logic to open and read the <code>file_path</code>.</li>
+                <li>Load the JSON: <code>config = json.load(f)</code>.</li>
+                <li>Add error handling and check if <code>mcpservers</code> is in the config.</li>
+                <li>Return the <code>config</code>.</li>
+            </ul>
+        </li>
+        <li><strong>In <code>Server.initialize</code>:</strong>
+            <ul>
+                <li>The <code>server_params</code> object is empty. Fill it using the <code>self.config</code> dictionary:
+                    <pre><code>server_params = StdioServerParameters(
+    command=command,
+    args=self.config["args"],
+    env={**os.environ, **self.config["env"]} if self.config.get("env") else None
+)</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li><strong>In <code>Server.list_tools</code>:</strong>
+            <ul>
+                <li>Check if the session exists: <code>if not self.session: ...</code></li>
+                <li>Call the session to get tools: <code>tools_response = await self.session.list_tools()</code>.</li>
+                <li>Format the response using the <code>tool_def</code> dictionary as shown in the starter code.</li>
+            </ul>
+        </li>
+        <li><strong>In <code>Server.execute_tool</code>:</strong>
+            <ul>
+                <li>Implement the retry loop. The core of the <code>try</code> block is:
+                    <pre><code>logging.info(f"Executing {tool_name}...")
+result = await self.session.call_tool(name=tool_name, arguments=arguments)
+return result</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li><strong>In <code>DataExtractor.extract_and_store_data</code>:</strong>
+            <ul>
+                <li>After loading the <code>pricing_data</code>, loop through the plans.</li>
+                <li>Inside the <code>for plan in pricing_data.get("plans", []):</code> loop, add the <code>sqlite_server.execute_tool</code> call to insert the data into the database using the <code>write_query</code>.</li>
+            </ul>
+        </li>
+        <li><strong>In <code>ChatSession.process_query</code>:</strong>
+            <ul>
+                <li><strong>Model Name:</strong> Change <code>&lt;ENTER_MODEL_NAME&gt;</code> to a real model, for example: <code>'claude-3-5-sonnet-20240620'</code>.</li>
+                <li><strong>if content.type == 'text':</strong> Add the text to <code>full_response</code> and <code>assistant_content</code>. Check if it's the only content to set <code>process_query = False</code>.</li>
+                <li><strong>elif content.type == 'tool_use':</strong> Implement the full tool-use loop:
+                    <ol>
+                        <li>Append the tool use request to <code>assistant_content</code> and then to <code>messages</code>.</li>
+                        <li>Get the tool <code>id</code>, <code>args</code>, and <code>name</code> from the <code>content</code>.</li>
+                        <li>Find the <code>server</code> that has this tool.</li>
+                        <li><code>execute_tool</code> on that server.</li>
+                        <li>Append the <code>tool_result</code> to <code>messages</code>.</li>
+                        <li>Call <code>self.anthropic.messages.create</code> again with the new <code>messages</code> list.</li>
+                    </ol>
+                </li>
+            </ul>
+        </li>
+        <li><strong>In <code>ChatSession.show_stored_data</code>:</strong>
+            <ul>
+                <li>Add the tool call to read from the <code>pricing_plans</code> table using the <code>read_query</code>.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Step 3: Run and Test Your Project</h2>
+    <p>You are now ready to run your application!</p>
+    
+    <ol>
+        <li><strong>Run the Client:</strong> In your terminal (with your virtual environment active):
+            <pre><code>python starter_client.py</code></pre>
+        </li>
+        <li><strong>Test Your Tools:</strong> Your client will start, connect to all 3 servers, and give you a <code>Query:</code> prompt.</li>
+        <li><strong>Use the Test Prompts:</strong>
+            <ul>
+                <li>First, scrape the sites: 
+                    <pre><code>"scrape these sites: {'cloudrift': 'https://www.cloudrift.ai/inference', 'deepinfra': 'https://deepinfra.com/pricing', 'fireworks': 'https://fireworks.ai/pricing#serverless-pricing', 'groq': 'https://groq.com/pricing'}"</code></pre>
+                </li>
+                <li>Then, ask questions about the scraped content:
+                    <ul>
+                        <li><code>"How much does cloudrift ai charge for deepseek v3?"</code></li>
+                        <li><code>"How much does deepinfra charge for deepseek v3"</code></li>
+                        <li><code>"Compare cloudrift ai and deepinfra's costs for deepseek v3"</code></li>
+                    </ul>
+                </li>
+                <li>Check your database: Type <code>show data</code> to see the structured data your <code>DataExtractor</code> saved to the SQLite database.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <div class="note">
+        <strong>Note:</strong> One suggestion would be to read the data from the SQLite database at the time of comparing the costs of Cloudrift AI and DeepInfra, and then execute the comparison prompt on the retrieved data. Otherwise, Scape will read the data again, which may result in additional API credit consumption.
+    </div>
+
+    <hr>
+
+    <h2>Custom MCP Server</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Criteria</th>
+                <th>Submission Requirements</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Implement <code>scrape_websites</code> tool to scrape, persist, and track metadata</td>
+                <td>
+                    Running the tool creates <code>scraped_content/</code> with one file per <code>{provider}_{format}.txt</code> for each successful provider and creates/updates <code>scraped_metadata.json</code> containing provider <code>name</code>, <code>url</code>, <code>domain</code>, <code>scraped_at</code>, <code>content_files</code>, <code>title</code>, <code>description</code>.<br>
+                    Tool returns a list whose length equals number of successful scrapes.
+                </td>
+            </tr>
+            <tr>
+                <td>Implement <code>extract_scraped_info</code> tool to load metadata and return file contents</td>
+                <td>
+                    Calling the tool with an identifier that matches provider name, URL, or domain returns a formatted JSON string whose <code>content</code> field includes loaded text for each available format; non-matching identifier returns a plain-text message indicating no saved information.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>AI-Powered MCP Client</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Criteria</th>
+                <th>Submission Requirements</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>List available MCP tools</td>
+                <td>
+                    <code>Server.list_tools</code> checks session existence, calls <code>list_tools()</code>, and returns a list of dicts containing <code>name</code>, <code>description</code>, <code>input_schema</code>.
+                </td>
+            </tr>
+            <tr>
+                <td>Execute tools with retries</td>
+                <td>
+                    <code>Server.execute_tool</code> contains a retry loop and within each attempt logs execution, calls <code>session.call_tool(...)</code> with a 60-second read timeout, and returns the result on success.
+                </td>
+            </tr>
+            <tr>
+                <td>Persist structured pricing to SQLite via MCP</td>
+                <td>
+                    <code>DataExtractor.extract_and_store_data</code> iterates <code>pricing_data["plans"]</code> and executes the provided <code>write_query</code> insertion exactly as specified (including column order and <code>json.dumps</code> for features).
+                </td>
+            </tr>
+            <tr>
+                <td>Drive tool use via LLM and complete tool-use loop</td>
+                <td>
+                    <code>ChatSession.process_query</code> sets a real model name (e.g., <code>claude-3-5-sonnet-20240620</code>), appends text chunks to <code>full_response</code>, appends assistant content, handles single-text completion exit, and for <code>tool_use</code> performs the full 1-7 loop (append tool request, locate server, execute tool, append tool result, call model again, and exit if next response is text only).
+                </td>
+            </tr>
+            <tr>
+                <td>Display recently stored data from DB</td>
+                <td>
+                    | data from DB |<br>
+                    | <code>ChatSession.show_stored_data</code> executes the provided <code>read_query</code>, prints the header lines, iterates result rows, and prints the formatted bullet lines including company, plan, and token pricing, then a closing separator. |
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Orchestrate an Agentic Workflow</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Criteria</th>
+                <th>Submission Requirements</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Orchestrate a functional multi-agent MCP workflow</td>
+                <td>
+                    The running client connects to three MCP servers (custom scraper, SQLite, filesystem where applicable) and, from natural-language queries, delegates to the correct tools to scrape, analyze, and store competitor pricing, then answer follow-ups using stored data.
+                </td>
+            </tr>
+            <tr>
+                <td>Demonstrate comparison Q&amp;A</td>
+                <td>
+                    <strong>Screenshot</strong> showing the comparison query <code>Compare cloudrift ai and deepinfra's costs for deepseek v3</code> and a full natural-language answer.
+                </td>
+            </tr>
+            <tr>
+                <td>Demonstrate scraping success</td>
+                <td>
+                    <strong>**Screenshot **</strong>showing the <code>scrape these sites: {...}</code> query and output confirming success count (e.g., "Successfully scraped 4 out of 4 websites" or equivalent success log).
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="suggestions">
+        <h3>Suggestions to Make Your Project Stand Out</h3>
+        <p>Add a retry/backoff and robots-aware crawl policy with per-provider rate limits and deduplication.</p>
+        <p>Implement a caching layer: check <code>scraped_metadata.json</code> timestamps and skip re-scraping unless stale, with a <code>--force</code> option.</p>
+        <p>Add a "pricing change alert" tool that diffs current vs. prior scrapes and summarizes changes in the response.</p>
+        <p>Add unit tests for the two tools and a smoke test that validates DB schema and a full scrape-to-answer flow.</p>
+        <p>Build a small CLI/terminal UI that streams tool events (scrape &rarr; parse &rarr; DB write &rarr; answer) for transparency.</p>
+    </div>
+
+</body>
+</html>

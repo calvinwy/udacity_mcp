@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom MCP Project Requirements</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background-color: #fff;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            border: 1px solid #e1e4e8;
+        }
+
+        th {
+            background-color: #f6f8fa;
+            text-align: left;
+            padding: 12px 15px;
+            font-weight: 600;
+            border: 1px solid #e1e4e8;
+            color: #24292e;
+        }
+
+        td {
+            padding: 15px;
+            border: 1px solid #e1e4e8;
+            vertical-align: top;
+        }
+
+        .criteria-col {
+            width: 40%;
+        }
+
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            background-color: #f3f4f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            border: 1px solid #ddd;
+        }
+
+        .suggestions-box {
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 50px;
+            background-color: #fff;
+        }
+
+        .suggestions-box h3 {
+            margin-top: 0;
+            color: #1e40af;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .suggestions-box p {
+            margin: 10px 0;
+        }
+
+        .db-header {
+            font-family: monospace;
+            border-bottom: 1px solid #333;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Custom MCP Server</h2>
+    <table>
+        <thead>
+            <tr>
+                <th class="criteria-col">Criteria</th>
+                <th>Submission Requirements</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Implement <code>scrape_websites</code> tool to scrape, persist, and track metadata</td>
+                <td>
+                    Running the tool creates <code>scraped_content/</code> with one file per <code>{provider}_{format}.txt</code> for each successful provider and creates/updates <code>scraped_metadata.json</code> containing provider <code>name</code>, <code>url</code>, <code>domain</code>, <code>scraped_at</code>, <code>content_files</code>, <code>title</code>, <code>description</code>. Tool returns a list whose length equals number of successful scrapes.
+                </td>
+            </tr>
+            <tr>
+                <td>Implement <code>extract_scraped_info</code> tool to load metadata and return file contents</td>
+                <td>
+                    Calling the tool with an identifier that matches provider name, URL, or domain returns a formatted JSON string whose <code>content</code> field includes loaded text for each available format; non-matching identifier returns a plain-text message indicating no saved information.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>AI-Powered MCP Client</h2>
+    <table>
+        <thead>
+            <tr>
+                <th class="criteria-col">Criteria</th>
+                <th>Submission Requirements</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>List available MCP tools</td>
+                <td>
+                    <code>Server.list_tools</code> checks session existence, calls <code>list_tools()</code>, and returns a list of dicts containing <code>name</code>, <code>description</code>, <code>input_schema</code>.
+                </td>
+            </tr>
+            <tr>
+                <td>Execute tools with retries</td>
+                <td>
+                    <code>Server.execute_tool</code> contains a retry loop and within each attempt logs execution, calls <code>session.call_tool(...)</code> with a 60-second read timeout, and returns the result on success.
+                </td>
+            </tr>
+            <tr>
+                <td>Persist structured pricing to SQLite via MCP</td>
+                <td>
+                    <code>DataExtractor.extract_and_store_data</code> iterates <code>pricing_data["plans"]</code> and executes the provided <code>write_query</code> insertion exactly as specified (including column order and <code>json.dumps</code> for features).
+                </td>
+            </tr>
+            <tr>
+                <td>Drive tool use via LLM and complete tool-use loop</td>
+                <td>
+                    <code>ChatSession.process_query</code> sets a real model name (e.g., <code>claude-3-5-sonnet-20240620</code>), appends text chunks to <code>full_response</code>, appends assistant content, handles single-text completion exit, and for <code>tool_use</code> performs the full 1-7 loop (append tool request, locate server, execute tool, append tool result, call model again, and exit if next response is text only).
+                </td>
+            </tr>
+            <tr>
+                <td>Display recently stored data from DB</td>
+                <td>
+                    <div class="db-header">| data from DB |</div><br>
+                    <code>ChatSession.show_stored_data</code> executes the provided <code>read_query</code>, prints the header lines, iterates result rows, and prints the formatted bullet lines including company, plan, and token pricing, then a closing separator.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Orchestrate an Agentic Workflow</h2>
+    <table>
+        <thead>
+            <tr>
+                <th class="criteria-col">Criteria</th>
+                <th>Submission Requirements</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Orchestrate a functional multi-agent MCP workflow</td>
+                <td>
+                    The running client connects to three MCP servers (custom scraper, SQLite, filesystem where applicable) and, from natural-language queries, delegates to the correct tools to scrape, analyze, and store competitor pricing, then answer follow-ups using stored data.
+                </td>
+            </tr>
+            <tr>
+                <td>Demonstrate comparison Q&amp;A</td>
+                <td>
+                    <strong>Screenshot</strong> showing the comparison query <code>Compare cloudrift ai and deepinfra's costs for deepseek v3</code> and a full natural-language answer.
+                </td>
+            </tr>
+            <tr>
+                <td>Demonstrate scraping success</td>
+                <td>
+                    <strong>**Screenshot **</strong>showing the <code>scrape these sites: {...}</code> query and output confirming success count (e.g., "Successfully scraped 4 out of 4 websites" or equivalent success log).
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="suggestions-box">
+        <h3>Suggestions to Make Your Project Stand Out</h3>
+        <p>Add a retry/backoff and robots-aware crawl policy with per-provider rate limits and deduplication.</p>
+        <p>Implement a caching layer: check <code>scraped_metadata.json</code> timestamps and skip re-scraping unless stale, with a <code>--force</code> option.</p>
+        <p>Add a "pricing change alert" tool that diffs current vs. prior scrapes and summarizes changes in the response.</p>
+        <p>Add unit tests for the two tools and a smoke test that validates DB schema and a full scrape-to-answer flow.</p>
+        <p>Build a small CLI/terminal UI that streams tool events (scrape &rarr; parse &rarr; DB write &rarr; answer) for transparency.</p>
+    </div>
+
+</body>
+</html>
