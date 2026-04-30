@@ -101,19 +101,24 @@ def scrape_websites(
 
             if scrape_result.get('success', False):
                 
+                content_files = {} # Initialize the dictionary
+                
                 # Save the scraped content to files based on formats
                 for format in formats:
-                    filename = f"{provider_name}_{format_type}.txt"
+                    filename = f"{provider_name}_{format}.txt" # Fixed variable name
                     filepath = os.path.join(SCRAPE_DIR, filename)
                     with open(filepath, 'w', encoding='utf-8') as file:
-                        file.write(scrape_result['data'].get(format, ''))
+                        file.write(scrape_result.get(format, ''))
+                    
+                    content_files[format] = filename # Record the filename
 
                 # Add metadata
                 metadata.update({
-                    "title": scrape_result.get('title', ''),
-                    "description": scrape_result.get('description', ''),
+                    "title": scrape_result['metadata'].get('title', ''),
+                    "description": scrape_result['metadata'].get('description', ''),
+                    "content_files": content_files, # Add the mapping to metadata
+                    "success": True
                 })
-
                 # Add Successful Scrape to the List
                 successful_scrape.append(provider_name)
 
@@ -181,9 +186,13 @@ def extract_scraped_info(identifier: str) -> str:
                             logger.error(f"Error reading content file {content_path}: {e}")
                             result['content'][format_type] = f"Error reading content: {e}"
                 return json.dumps(result, indent=2)
-            else:
-                logger.warning(f"No matching metadata found for identifier: {identifier}")
-                return f"There's no saved information related to identifier '{identifier}'."
+        
+        # If the loop finishes without returning, we didn't find it.
+        logger.warning(f"No matching metadata found for identifier: {identifier}")
+        return f"There's no saved information related to identifier '{identifier}'."
+    except Exception as e:
+        logger.error(f"Error reading metadata file {metadata_file}: {e}")
+        return f"Error reading metadata: {e}"
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")
