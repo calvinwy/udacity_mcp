@@ -32,6 +32,7 @@ class Configuration:
         """Initialize configuration with environment variables."""
         self.load_env()
         self.api_key = os.getenv("ANTHROPIC_API_KEY")
+        self.model = os.getenv("ANTHROPIC_MODEL", 'claude-sonnet-4-6')
 
     @staticmethod
     def load_env() -> None:
@@ -196,9 +197,10 @@ class Server:
 class DataExtractor:
     """Handles extraction and storage of structured data from LLM responses."""
     
-    def __init__(self, sqlite_server: Server, anthropic_client: Anthropic):
+    def __init__(self, sqlite_server: Server, anthropic_client: Anthropic, model: str):
         self.sqlite_server = sqlite_server
         self.anthropic = anthropic_client
+        self.model = model
         
     async def setup_data_tables(self) -> None:
         """Setup tables for storing extracted data."""
@@ -232,7 +234,7 @@ class DataExtractor:
         try:
             response = self.anthropic.messages.create(
                 max_tokens=1024,
-                model='claude-sonnet-4-5-20250929',
+                model=self.model,
                 messages=[{'role': 'user', 'content': prompt}]
             )
             
@@ -293,9 +295,10 @@ class DataExtractor:
 class ChatSession:
     """Orchestrates the interaction between user, LLM, and tools."""
 
-    def __init__(self, servers: list[Server], api_key: str) -> None:
+    def __init__(self, servers: list[Server], api_key: str, model: str) -> None:
         self.servers: list[Server] = servers
         self.anthropic = Anthropic(api_key=api_key)
+        self.model = model
         self.available_tools: List[ToolDefinition] = []
         self.tool_to_server: Dict[str, str] = {}
         self.sqlite_server: Server | None = None
@@ -314,7 +317,7 @@ class ChatSession:
         messages = [{'role': 'user', 'content': query}]
         response = self.anthropic.messages.create(
             max_tokens=2024,
-            model='claude-3-5-sonnet-20240620', 
+            model=self.model, 
             tools=self.available_tools,
             messages=messages
         )
@@ -323,28 +326,39 @@ class ChatSession:
         source_url = None
         used_web_search = False
         
+        servers_dict = {server.name: server for server in self.servers}
+
         process_query = True
         while process_query:
-            assistant_content = []
+            messages.append({"role": "assistant", "content": response.content})
+            tool_results_content = []
+            
             for content in response.content:
                 if content.type == 'text':
                     print(f"AI says: {content.text}")
-                    full_response = content.text.strip()
-                    assistant_content.append(content.text)
+                    full_response += content.text
+                    # assistant_content.append(content.text)
                     if len(response.content) == 1:
                         process_query = False
                     
                 elif content.type == 'tool_use':
                     print(f"Tool to call: {content.name}, Arguments: {content.input}, ID: {content.id}")
                     server = self.tool_to_server.get(content.name)
-                    tool_result = server.execute_tool(
+                    tool_result = await servers_dict[server].execute_tool(
                         tool_name=content.name,
                         arguments=content.input,
                     )
-                    messages.append({'role': 'assistant', 'content': tool_result})
+
+                    tool_results_content.append({
+                        "type": "tool_result",
+                        "tool_use_id": content.id,
+                        "content": str(tool_result)
+                    })
+
+                    messages.append({'role': 'user', 'content': tool_results_content})
                     response = self.anthropic.messages.create(
                         max_tokens=2024,
-                        model='claude-3-5-sonnet-20240620', 
+                        model=self.model, 
                         tools=self.available_tools,
                         messages=messages
                     )
@@ -419,7 +433,7 @@ class ChatSession:
             print(f"Available tools: {[tool['name'] for tool in self.available_tools]}")
             
             if self.sqlite_server:
-                self.data_extractor = DataExtractor(self.sqlite_server, self.anthropic)
+                self.data_extractor = DataExtractor(self.sqlite_server, self.anthropic, self.model)
                 await self.data_extractor.setup_data_tables()
                 print("Data extraction enabled")
 
@@ -439,7 +453,7 @@ async def main() -> None:
     server_config = config.load_config(config_file)
     
     servers = [Server(name, srv_config) for name, srv_config in server_config["mcpServers"].items()]
-    chat_session = ChatSession(servers, config.anthropic_api_key)
+    chat_session = ChatSession(servers, config.anthropic_api_key, config.model)
     await chat_session.start()
 
 

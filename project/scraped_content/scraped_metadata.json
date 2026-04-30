@@ -1,0 +1,8 @@
+{
+  "yahoo": {
+    "provider": "yahoo",
+    "url": "https://www.yahoo.com",
+    "domain": "www.yahoo.com",
+    "scraped_at": "2026-05-01T00:57:59.626731"
+  }
+}
