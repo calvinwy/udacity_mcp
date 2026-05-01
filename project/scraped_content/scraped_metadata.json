@@ -4,5 +4,35 @@
     "url": "https://www.yahoo.com",
     "domain": "www.yahoo.com",
     "scraped_at": "2026-05-01T00:57:59.626731"
+  },
+  "cloudrift": {
+    "provider": "cloudrift",
+    "url": "https://www.cloudrift.ai/inference",
+    "domain": "www.cloudrift.ai",
+    "scraped_at": "2026-05-01T07:42:05.290640"
+  },
+  "deepinfra": {
+    "provider": "deepinfra",
+    "url": "https://deepinfra.com/pricing",
+    "domain": "deepinfra.com",
+    "scraped_at": "2026-05-01T07:42:06.632626"
+  },
+  "fireworks": {
+    "provider": "fireworks",
+    "url": "https://fireworks.ai/pricing#serverless-pricing",
+    "domain": "fireworks.ai",
+    "scraped_at": "2026-05-01T07:42:07.640811"
+  },
+  "groq": {
+    "provider": "groq",
+    "url": "https://groq.com/pricing",
+    "domain": "groq.com",
+    "scraped_at": "2026-05-01T07:42:08.695409"
+  },
+  "cloudrift_ai": {
+    "provider": "cloudrift_ai",
+    "url": "https://cloudrift.ai",
+    "domain": "cloudrift.ai",
+    "scraped_at": "2026-05-01T07:42:46.924812"
   }
 }

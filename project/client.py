@@ -355,13 +355,14 @@ class ChatSession:
                         "content": str(tool_result)
                     })
 
-                    messages.append({'role': 'user', 'content': tool_results_content})
-                    response = self.anthropic.messages.create(
-                        max_tokens=2024,
-                        model=self.model, 
-                        tools=self.available_tools,
-                        messages=messages
-                    )
+            if len(tool_results_content) > 0:
+                messages.append({'role': 'user', 'content': tool_results_content})
+                response = self.anthropic.messages.create(
+                    max_tokens=2024,
+                    model=self.model, 
+                    tools=self.available_tools,
+                    messages=messages
+                )
 
         if self.data_extractor and full_response.strip():
             await self.data_extractor.extract_and_store_data(query, full_response.strip(), source_url)
