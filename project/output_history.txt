@@ -1,0 +1,265 @@
+MCP Chatbot with Data Extraction Started!
+Type your queries, 'show data' to view stored data, or 'quit' to exit.
+
+Query: scrape these sites: {'cloudrift': 'https://www.cloudrift.ai/inference', 'deepinfra': 'https://deepinfra.com/pricing', 'fireworks': 'https://fireworks.ai/pricing#serverless-pricing', 'groq': 'https://groq.com/pricing'}
+2026-05-01 15:24:42,510 - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+AI says: I'll scrape all 4 sites simultaneously right away!
+Tool to call: scrape_websites, Arguments: {'websites': {'cloudrift': 'https://www.cloudrift.ai/inference', 'deepinfra': 'https://deepinfra.com/pricing', 'fireworks': 'https://fireworks.ai/pricing#serverless-pricing', 'groq': 'https://groq.com/pricing'}}, ID: toolu_017hTx64MHRdVz4KSKC7N1VB
+2026-05-01 15:24:42,527 - INFO - Executing scrape_websites...
+2026-05-01 15:24:42,529 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-01 15:24:42,529 - __main__ - INFO - Scraping cloudrift: https://www.cloudrift.ai/inference
+2026-05-01 15:24:43,530 - __main__ - INFO - Successfully scraped cloudrift and saved to scraped_content/cloudrift_html.txt
+2026-05-01 15:24:43,531 - __main__ - INFO - Scraping deepinfra: https://deepinfra.com/pricing
+2026-05-01 15:24:44,883 - __main__ - INFO - Successfully scraped deepinfra and saved to scraped_content/deepinfra_html.txt
+2026-05-01 15:24:44,883 - __main__ - INFO - Scraping fireworks: https://fireworks.ai/pricing#serverless-pricing
+2026-05-01 15:24:45,853 - __main__ - INFO - Successfully scraped fireworks and saved to scraped_content/fireworks_html.txt
+2026-05-01 15:24:45,853 - __main__ - INFO - Scraping groq: https://groq.com/pricing
+2026-05-01 15:24:46,775 - __main__ - INFO - Successfully scraped groq and saved to scraped_content/groq_html.txt
+2026-05-01 15:24:46,776 - __main__ - INFO - Scraping completed. Successfully scraped: ['cloudrift', 'deepinfra', 'fireworks', 'groq']
+2026-05-01 15:24:46,781 - INFO - ✓ Tool 'scrape_websites' executed successfully on attempt 1
+2026-05-01 15:24:50,913 - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+AI says: All 4 sites were scraped successfully! Here's a summary:
+
+| # | Provider | URL | Status |
+|---|----------|-----|--------|
+| 1 | **CloudRift** | https://www.cloudrift.ai/inference | ✅ Success |
+| 2 | **DeepInfra** | https://deepinfra.com/pricing | ✅ Success |
+| 3 | **Fireworks** | https://fireworks.ai/pricing#serverless-pricing | ✅ Success |
+| 4 | **Groq** | https://groq.com/pricing | ✅ Success |
+
+All four AI inference/pricing pages have been scraped and stored. You can now:
+- **Extract specific info** from any of them (e.g., pricing tables, model lists, etc.)
+- **Compare pricing** across providers
+- **Analyze the data** for insights
+
+What would you like to do with the scraped content?
+2026-05-01 15:24:53,942 - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-01 15:24:53,945 - INFO - Executing write_query...
+2026-05-01 15:24:53,954 - INFO - ✓ Tool 'write_query' executed successfully on attempt 1
+2026-05-01 15:24:53,954 - INFO - Stored 1 pricing plans
+
+
+
+Query: "How much does cloudrift ai charge for deepseek v3?"
+2026-05-01 15:24:58,190 - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+AI says: Let me scrape the Cloudrift AI website to find their pricing for DeepSeek V3!
+Tool to call: scrape_websites, Arguments: {'websites': {'cloudrift_ai': 'https://cloudrift.ai/pricing'}, 'formats': ['markdown']}, ID: toolu_01Y4nX4QR4UZR1ejQL7vCUHJ
+2026-05-01 15:24:58,193 - INFO - Executing scrape_websites...
+2026-05-01 15:24:58,195 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-01 15:24:58,196 - __main__ - INFO - Scraping cloudrift_ai: https://cloudrift.ai/pricing
+2026-05-01 15:25:00,064 - __main__ - INFO - Successfully scraped cloudrift_ai and saved to scraped_content/cloudrift_ai_markdown.txt
+2026-05-01 15:25:00,065 - __main__ - INFO - Scraping completed. Successfully scraped: ['cloudrift_ai']
+2026-05-01 15:25:00,070 - INFO - ✓ Tool 'scrape_websites' executed successfully on attempt 1
+2026-05-01 15:25:01,641 - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+Tool to call: extract_scraped_info, Arguments: {'identifier': 'cloudrift_ai'}, ID: toolu_014QA6FbsC9E3Qi9dMXQZVaQ
+2026-05-01 15:25:01,642 - INFO - Executing extract_scraped_info...
+2026-05-01 15:25:01,643 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-01 15:25:01,643 - __main__ - INFO - Extracting information for identifier: cloudrift_ai
+2026-05-01 15:25:01,643 - __main__ - INFO - Files in scraped_content: ['cloudrift_markdown.txt', 'deepinfra_markdown.txt', 'cloudrift_ai_markdown.txt', 'fireworks_markdown.txt', 'groq_html.txt', 'deepinfra_html.txt', 'groq_markdown.txt', 'cloudrift_html.txt', 'fireworks_html.txt', 'scraped_metadata.json']
+2026-05-01 15:25:01,644 - __main__ - INFO - Checking metadata file: scraped_content/scraped_metadata.json
+2026-05-01 15:25:01,644 - __main__ - INFO - Found matching metadata for identifier: cloudrift_ai
+2026-05-01 15:25:01,646 - INFO - ✓ Tool 'extract_scraped_info' executed successfully on attempt 1
+2026-05-01 15:25:12,475 - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+AI says: Based on the scraped CloudRift AI pricing page, **CloudRift AI does not list DeepSeek V3 as a specific product or API service**. Instead, CloudRift AI is a **GPU infrastructure/rental platform** — they charge for GPU compute, not individual AI models like DeepSeek V3 by name.
+
+That said, you *could* run DeepSeek V3 yourself on their GPUs. Here's a summary of their pricing:
+
+---
+
+### ☁️ CloudRift AI – GPU Pricing (as of May 2026)
+
+| GPU Model | On-Demand ($/hr) | 1 Month ($/hr) | 3 Months ($/hr) | VRAM |
+|---|---|---|---|---|
+| RTX 4090 | $0.39 | $0.35 | $0.33 | 96 GB |
+| L40S | $0.63 | $0.57 | $0.54 | 48 GB |
+| RTX 5090 | $0.65 | $0.59 | $0.55 | 32 GB |
+| RTX PRO 6000 | $1.29 | $1.16 | $1.10 | 96 GB |
+| H100 | — | $1.70 | $1.33 | 48 GB |
+| H200 | — | $2.50 | $2.38 | 141 GB |
+| MI350X (AMD) | $3.65 | $3.29 | $3.10 | 288 GB |
+| B200 | — | $3.60 | $3.24 | 180 GB |
+
+---
+
+### 🤔 What does this mean for DeepSeek V3?
+
+DeepSeek V3 is a **671B parameter MoE model** that requires significant VRAM to run (roughly 400+ GB for full precision, or ~200+ GB quantized). To self-host it on CloudRift, you'd likely need **multiple high-VRAM GPUs** (e.g., several H200s or MI350Xs).
+
+**If you're looking for a per-token API price for DeepSeek V3**, CloudRift AI is not the right platform — you'd want to check providers like **DeepSeek's own API, Together AI, Fireworks AI, or OpenRouter** instead.
+2026-05-01 15:25:25,379 - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-01 15:25:25,381 - ERROR - Error extracting pricing data: Unterminated string starting at: line 77 column 22 (char 3003)
+
+
+
+Query: How much does deepinfra charge for deepseek v3
+2026-05-01 15:25:29,030 - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+AI says: Let me scrape DeepInfra's pricing page to get the latest information on DeepSeek V3 pricing.
+Tool to call: scrape_websites, Arguments: {'websites': {'deepinfra': 'https://deepinfra.com/pricing'}, 'formats': ['markdown']}, ID: toolu_01Fveok8XUyfW2Zr76yNk58t
+2026-05-01 15:25:29,032 - INFO - Executing scrape_websites...
+2026-05-01 15:25:29,034 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-01 15:25:29,034 - __main__ - INFO - Scraping deepinfra: https://deepinfra.com/pricing
+2026-05-01 15:25:29,945 - __main__ - INFO - Successfully scraped deepinfra and saved to scraped_content/deepinfra_markdown.txt
+2026-05-01 15:25:29,946 - __main__ - INFO - Scraping completed. Successfully scraped: ['deepinfra']
+2026-05-01 15:25:29,950 - INFO - ✓ Tool 'scrape_websites' executed successfully on attempt 1
+2026-05-01 15:25:31,316 - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+Tool to call: extract_scraped_info, Arguments: {'identifier': 'deepinfra'}, ID: toolu_01AAY957dJPEQrxqUcZpmhhP
+2026-05-01 15:25:31,317 - INFO - Executing extract_scraped_info...
+2026-05-01 15:25:31,318 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-01 15:25:31,319 - __main__ - INFO - Extracting information for identifier: deepinfra
+2026-05-01 15:25:31,319 - __main__ - INFO - Files in scraped_content: ['cloudrift_markdown.txt', 'deepinfra_markdown.txt', 'cloudrift_ai_markdown.txt', 'fireworks_markdown.txt', 'groq_html.txt', 'deepinfra_html.txt', 'groq_markdown.txt', 'cloudrift_html.txt', 'fireworks_html.txt', 'scraped_metadata.json']
+2026-05-01 15:25:31,319 - __main__ - INFO - Checking metadata file: scraped_content/scraped_metadata.json
+2026-05-01 15:25:31,319 - __main__ - INFO - Found matching metadata for identifier: deepinfra
+2026-05-01 15:25:31,322 - INFO - ✓ Tool 'extract_scraped_info' executed successfully on attempt 1
+2026-05-01 15:25:41,462 - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+AI says: Here is a full breakdown of **DeepSeek V3 pricing on DeepInfra**, including all available versions:
+
+---
+
+## 🧠 DeepSeek V3 Pricing on DeepInfra
+
+All prices are **per 1 million tokens** with a **160k context window**:
+
+| Model | Context | Input (per 1M tokens) | Cached Input | Output (per 1M tokens) |
+|---|---|---|---|---|
+| **DeepSeek-V3** (original) | 160k | **$0.32** | — | **$0.89** |
+| **DeepSeek-V3-0324** | 160k | **$0.20** | $0.135 | **$0.77** |
+| **DeepSeek-V3.1** | 160k | **$0.21** | $0.13 | **$0.79** |
+| **DeepSeek-V3.1-Terminus** | 160k | **$0.21** | $0.13 | **$0.79** |
+| **DeepSeek-V3.2** (latest) | 160k | **$0.26** | $0.13 | **$0.38** |
+
+---
+
+### 💡 Key Takeaways:
+- **DeepSeek-V3** (original) is the most expensive at **$0.32 input / $0.89 output**.
+- **DeepSeek-V3-0324** is the cheapest at **$0.20 input / $0.77 output**.
+- **DeepSeek-V3.2** (the latest version) offers the **lowest output cost** at just **$0.38/1M tokens**, with a competitive input price of $0.26 (or $0.13 cached).
+- All DeepSeek V3 variants support prompt **caching**, which can significantly reduce input costs.
+- DeepInfra uses **pay-as-you-go pricing** with no upfront costs or long-term contracts.
+
+> 📌 *Prices sourced directly from [deepinfra.com/pricing](https://deepinfra.com/pricing).*
+2026-05-01 15:25:41,724 - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-05-01 15:25:41,725 - INFO - Retrying request to /v1/messages in 18.000000 seconds
+2026-05-01 15:26:10,609 - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-01 15:26:10,611 - INFO - Executing write_query...
+2026-05-01 15:26:10,620 - INFO - ✓ Tool 'write_query' executed successfully on attempt 1
+2026-05-01 15:26:10,620 - INFO - Executing write_query...
+2026-05-01 15:26:10,623 - INFO - ✓ Tool 'write_query' executed successfully on attempt 1
+2026-05-01 15:26:10,623 - INFO - Executing write_query...
+2026-05-01 15:26:10,626 - INFO - ✓ Tool 'write_query' executed successfully on attempt 1
+2026-05-01 15:26:10,626 - INFO - Executing write_query...
+2026-05-01 15:26:10,629 - INFO - ✓ Tool 'write_query' executed successfully on attempt 1
+2026-05-01 15:26:10,629 - INFO - Executing write_query...
+2026-05-01 15:26:10,631 - INFO - ✓ Tool 'write_query' executed successfully on attempt 1
+2026-05-01 15:26:10,631 - INFO - Stored 5 pricing plans
+
+
+
+Query: Compare cloudrift ai and deepinfra's costs for deepseek v3
+2026-05-01 15:26:46,220 - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+AI says: Sure! Let me scrape both websites simultaneously to get the latest pricing information.
+Tool to call: scrape_websites, Arguments: {'websites': {'cloudrift': 'https://cloudrift.ai', 'deepinfra': 'https://deepinfra.com/deepseek-ai/DeepSeek-V3-0324'}}, ID: toolu_0118CBvNgaBo2ocEWzfXJxxF
+2026-05-01 15:26:46,223 - INFO - Executing scrape_websites...
+2026-05-01 15:26:46,225 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-01 15:26:46,226 - __main__ - INFO - Scraping cloudrift: https://cloudrift.ai
+2026-05-01 15:26:53,989 - __main__ - INFO - Successfully scraped cloudrift and saved to scraped_content/cloudrift_html.txt
+2026-05-01 15:26:53,989 - __main__ - INFO - Scraping deepinfra: https://deepinfra.com/deepseek-ai/DeepSeek-V3-0324
+2026-05-01 15:27:02,759 - __main__ - INFO - Successfully scraped deepinfra and saved to scraped_content/deepinfra_html.txt
+2026-05-01 15:27:02,760 - __main__ - INFO - Scraping completed. Successfully scraped: ['cloudrift', 'deepinfra']
+2026-05-01 15:27:02,765 - INFO - ✓ Tool 'scrape_websites' executed successfully on attempt 1
+2026-05-01 15:27:06,811 - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+AI says: Both scraped! Now let me extract the information from both at the same time.
+Tool to call: extract_scraped_info, Arguments: {'identifier': 'cloudrift'}, ID: toolu_01T63JeAExWv3uHYhD24ntYr
+2026-05-01 15:27:06,814 - INFO - Executing extract_scraped_info...
+2026-05-01 15:27:06,816 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-01 15:27:06,816 - __main__ - INFO - Extracting information for identifier: cloudrift
+2026-05-01 15:27:06,817 - __main__ - INFO - Files in scraped_content: ['cloudrift_markdown.txt', 'deepinfra_markdown.txt', 'cloudrift_ai_markdown.txt', 'fireworks_markdown.txt', 'groq_html.txt', 'deepinfra_html.txt', 'groq_markdown.txt', 'cloudrift_html.txt', 'fireworks_html.txt', 'scraped_metadata.json']
+2026-05-01 15:27:06,817 - __main__ - INFO - Checking metadata file: scraped_content/scraped_metadata.json
+2026-05-01 15:27:06,817 - __main__ - INFO - Found matching metadata for identifier: cloudrift
+2026-05-01 15:27:06,823 - INFO - ✓ Tool 'extract_scraped_info' executed successfully on attempt 1
+Tool to call: extract_scraped_info, Arguments: {'identifier': 'deepinfra'}, ID: toolu_01WW1nX2neyX77Nes5bSms8s
+2026-05-01 15:27:06,825 - INFO - Executing extract_scraped_info...
+2026-05-01 15:27:06,825 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-01 15:27:06,826 - __main__ - INFO - Extracting information for identifier: deepinfra
+2026-05-01 15:27:06,826 - __main__ - INFO - Files in scraped_content: ['cloudrift_markdown.txt', 'deepinfra_markdown.txt', 'cloudrift_ai_markdown.txt', 'fireworks_markdown.txt', 'groq_html.txt', 'deepinfra_html.txt', 'groq_markdown.txt', 'cloudrift_html.txt', 'fireworks_html.txt', 'scraped_metadata.json']
+2026-05-01 15:27:06,826 - __main__ - INFO - Checking metadata file: scraped_content/scraped_metadata.json
+2026-05-01 15:27:06,826 - __main__ - INFO - Found matching metadata for identifier: deepinfra
+2026-05-01 15:27:06,829 - INFO - ✓ Tool 'extract_scraped_info' executed successfully on attempt 1
+2026-05-01 15:27:30,862 - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+AI says: Here is a detailed side-by-side cost comparison for **DeepSeek V3** between **CloudRift AI** and **DeepInfra**, based on live data scraped directly from both websites:
+
+---
+
+## 🔍 DeepSeek V3 Pricing Comparison
+
+> **Note:** CloudRift's homepage showcases their inference platform but does **not list a specific price for DeepSeek V3** in their public-facing page — their featured model example is Qwen. DeepInfra, however, has a **dedicated model page** for DeepSeek-V3-0324 with explicit pricing. Here's a full breakdown:
+
+---
+
+### 💰 DeepInfra — `deepseek-ai/DeepSeek-V3-0324`
+
+| Metric | Price |
+|---|---|
+| 🟢 **Input tokens** | **$0.20 / 1M tokens** |
+| 🔴 **Output tokens** | **$0.77 / 1M tokens** |
+| ⚡ **Cached input tokens** | **$0.135 / 1M tokens** |
+| **Model** | DeepSeek-V3-0324 (671B MoE, 37B active) |
+| **Quantization** | fp4 |
+| **Context window** | 163,840 tokens |
+| **Features** | JSON mode, Function calling, OpenAI-compatible API |
+| **Endpoint type** | Public shared + Private dedicated deployments available |
+
+---
+
+### ☁️ CloudRift AI — DeepSeek V3 Inference
+
+| Metric | Info |
+|---|---|
+| **Input/Output pricing** | ❌ Not publicly listed on homepage for DeepSeek V3 |
+| **DeepSeek mentioned?** | ✅ Yes — listed as a supported model ("Llama, DeepSeek, GLM, Kimi, Qwen, Mistral") |
+| **Pricing model** | Pay-per-token (for inference) |
+| **Example model shown** | Qwen 3.5-35B at **$0.16 input / $1.30 output** per 1M tokens |
+| **Access** | Inference API via `https://inference.cloudrift.ai/v1` |
+| **API compatibility** | OpenAI-compatible |
+
+---
+
+### 📊 Key Takeaways
+
+| Factor | CloudRift AI | DeepInfra |
+|---|---|---|
+| **DeepSeek V3 input price** | Not publicly listed | **$0.20/1M tokens** |
+| **DeepSeek V3 output price** | Not publicly listed | **$0.77/1M tokens** |
+| **Cached token pricing** | Not listed | **$0.135/1M tokens** |
+| **Transparency** | Requires inquiry / enterprise contact | Fully public |
+| **Private deployment** | ✅ Yes (enterprise-focused) | ✅ Yes |
+| **Context window** | Not specified publicly | 163,840 tokens |
+| **Data sovereignty** | ✅ Strong (on-premise, SOC 2, GDPR) | SOC 2 + ISO 27001 |
+| **Target audience** | Enterprise/sovereign AI operators | Developers & enterprises |
+
+---
+
+### 🏁 Verdict
+
+- **DeepInfra** wins on **pricing transparency** for DeepSeek V3 — at **$0.20/1M input** and **$0.77/1M output**, it's a competitive serverless option with no surprises.
+- **CloudRift AI** positions itself more as a **sovereign/enterprise platform**, and doesn't publicly list per-token DeepSeek V3 pricing — you'd need to contact them directly for quotes. Their platform shines for data-residency-critical deployments.
+
+If you need a quick, cost-effective API call setup, **DeepInfra** is the clear choice for DeepSeek V3. If you need **on-premise, private, GDPR-compliant** inference, **CloudRift** may be worth the inquiry.
+2026-05-01 15:27:31,294 - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-05-01 15:27:31,296 - INFO - Retrying request to /v1/messages in 0.455558 seconds
+2026-05-01 15:27:32,004 - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-05-01 15:27:32,005 - INFO - Retrying request to /v1/messages in 0.890570 seconds
+2026-05-01 15:27:33,102 - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-05-01 15:27:33,104 - ERROR - Error in structured extraction: Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': "This request would exceed your organization's rate limit of 30,000 input tokens per minute (org: 85707a2e-7258-464a-a272-be9c0348dd84, model: claude-sonnet-4-6). For details, refer to: https://docs.claude.com/en/api/rate-limits. You can see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://claude.com/contact-sales to discuss your options for a rate limit increase."}, 'request_id': 'req_011Cabvhj8yWhCxqjBDkopch'}
+2026-05-01 15:27:33,104 - INFO - Stored 0 pricing plans
+
+
+
+Query: show data
+Stored Data:
+  ('meta', None)
+  ('content', [TextContent(type='text', text="[{'company_name': 'DeepInfra', 'plan_name': 'DeepSeek-V3 (original)', 'input_tokens': 0.32, 'output_tokens': 0.89, 'billing_period': 'one-time'}, {'company_name': 'DeepInfra', 'plan_name': 'DeepSeek-V3-0324', 'input_tokens': 0.2, 'output_tokens': 0.77, 'billing_period': 'one-time'}, {'company_name': 'DeepInfra', 'plan_name': 'DeepSeek-V3.1', 'input_tokens': 0.21, 'output_tokens': 0.79, 'billing_period': 'one-time'}, {'company_name': 'DeepInfra', 'plan_name': 'DeepSeek-V3.1-Terminus', 'input_tokens': 0.21, 'output_tokens': 0.79, 'billing_period': 'one-time'}, {'company_name': 'DeepInfra', 'plan_name': 'DeepSeek-V3.2 (latest)', 'input_tokens': 0.26, 'output_tokens': 0.38, 'billing_period': 'one-time'}]", annotations=None, meta=None)])
+  ('structuredContent', None)
+  ('isError', False)
+
+Query: quit
+(mcp-project) calvin@Calvins-MacBook-Pro project % 

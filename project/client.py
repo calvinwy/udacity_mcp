@@ -282,15 +282,45 @@ class DataExtractor:
             extraction_response = extraction_response.replace("```json\n", "").replace("```", "")
             pricing_data = json.loads(extraction_response)
             
+            company_name = pricing_data.get("company_name", "Unknown")
+
+            # Helper to escape single quotes for plain SQL and handle NULLs
+            def to_sql(val):
+                if val is None: return "NULL"
+                if isinstance(val, (int, float)): return str(val)
+                safe_val = str(val).replace("'", "''")
+                return f"'{safe_val}'"
+
             for plan in pricing_data.get("plans", []):
-                # complete
-                _ = self.sqlite_server.execute_tool("write_query", {'query': user_query})
+                # Prepare the fields for the SQL statement
+                plan_name = to_sql(plan.get("plan_name"))
+                input_tokens = to_sql(plan.get("input_tokens"))
+                output_tokens = to_sql(plan.get("output_tokens"))
+                currency = to_sql(plan.get("currency", "USD"))
+                billing_period = to_sql(plan.get("billing_period"))
+                # Store features list as a JSON string
+                features = to_sql(json.dumps(plan.get("features", [])))
+                limitations = to_sql(plan.get("limitations"))
+                safe_company = to_sql(company_name)
+                safe_query = to_sql(user_query)
+
+                # Construct the plain SQL query string
+                insert_query = f"""
+                INSERT INTO pricing_plans 
+                (company_name, plan_name, input_tokens, output_tokens, currency, billing_period, features, limitations, source_query)
+                VALUES 
+                ({safe_company}, {plan_name}, {input_tokens}, {output_tokens}, {currency}, {billing_period}, {features}, {limitations}, {safe_query});
+                """
+                
+                # Execute the tool with the query string
+                await self.sqlite_server.execute_tool("write_query", {
+                    "query": insert_query,
+                })
             
             logger.info(f"Stored {len(pricing_data.get('plans', []))} pricing plans")
             
         except Exception as e:
             logging.error(f"Error extracting pricing data: {e}")
-
 
 class ChatSession:
     """Orchestrates the interaction between user, LLM, and tools."""
@@ -328,16 +358,18 @@ class ChatSession:
         
         servers_dict = {server.name: server for server in self.servers}
 
+        # Analyze response content for tool calls and text
         process_query = True
         while process_query:
             messages.append({"role": "assistant", "content": response.content})
-            tool_results_content = []
+            assistant_content = []
             
             for content in response.content:
                 if content.type == 'text':
                     print(f"AI says: {content.text}")
                     full_response += content.text
-                    # assistant_content.append(content.text)
+                    
+                    # Terminates the loop if the response is purely textual (no tool calls)
                     if len(response.content) == 1:
                         process_query = False
                     
@@ -349,14 +381,16 @@ class ChatSession:
                         arguments=content.input,
                     )
 
-                    tool_results_content.append({
+                    # Bind results of multiple tool calls
+                    assistant_content.append({
                         "type": "tool_result",
                         "tool_use_id": content.id,
                         "content": str(tool_result)
                     })
 
-            if len(tool_results_content) > 0:
-                messages.append({'role': 'user', 'content': tool_results_content})
+            # Feed tools results back into the model, continue analysis in the next loop iteration
+            if len(assistant_content) > 0:
+                messages.append({'role': 'user', 'content': assistant_content})
                 response = self.anthropic.messages.create(
                     max_tokens=2024,
                     model=self.model, 
@@ -404,7 +438,7 @@ class ChatSession:
             return
             
         try:
-            result = await self.session.call_tool(name="read_query", arguments={"query": "SELECT company_name, plan_name, input_tokens, output_tokens, billing_period FROM pricing_plans ORDER BY created_at DESC LIMIT 5"})
+            result = await self.sqlite_server.session.call_tool(name="read_query", arguments={"query": "SELECT company_name, plan_name, input_tokens, output_tokens, billing_period FROM pricing_plans ORDER BY created_at DESC LIMIT 5"})
             print("Stored Data:")
             for row in result:
                 print(f"  {row}")
@@ -414,6 +448,7 @@ class ChatSession:
     async def start(self) -> None:
         """Main chat session handler."""
         try:
+            # Initialize all servers and gather tools
             for server in self.servers:
                 try:
                     await server.initialize()
@@ -433,14 +468,17 @@ class ChatSession:
             print(f"\nConnected to {len(self.servers)} server(s)")
             print(f"Available tools: {[tool['name'] for tool in self.available_tools]}")
             
+            # Initialize data extractor if SQLite server is available
             if self.sqlite_server:
                 self.data_extractor = DataExtractor(self.sqlite_server, self.anthropic, self.model)
                 await self.data_extractor.setup_data_tables()
                 print("Data extraction enabled")
 
+            # Begin chat loop
             await self.chat_loop()
 
         finally:
+            # Close all server connections gracefully using AsyncExitStack
             await self.cleanup_servers()
 
 

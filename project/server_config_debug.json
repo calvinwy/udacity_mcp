@@ -1,0 +1,26 @@
+{
+    "mcpServers": {        
+        "llm_inference": {
+            "command": "/Users/calvin/Documents/Projects/udacity_mcp/project/.venv/bin/python",
+            "args": [
+                "/Users/calvin/Documents/Projects/udacity_mcp/project/server.py"
+            ]
+        },
+        "sqlite": {
+            "command": "uvx",
+            "args": [
+                "mcp-server-sqlite", 
+                "--db-path", 
+                "/Users/calvin/Documents/Projects/udacity_mcp/project/test.db"
+            ]
+        },
+        "filesystem": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-filesystem",
+                "/Users/calvin/Documents/Projects/udacity_mcp"
+            ]
+        }
+    }
+}

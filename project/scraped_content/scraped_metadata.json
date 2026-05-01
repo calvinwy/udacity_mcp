@@ -1,38 +1,66 @@
 {
-  "yahoo": {
-    "provider": "yahoo",
-    "url": "https://www.yahoo.com",
-    "domain": "www.yahoo.com",
-    "scraped_at": "2026-05-01T00:57:59.626731"
-  },
   "cloudrift": {
     "provider": "cloudrift",
-    "url": "https://www.cloudrift.ai/inference",
-    "domain": "www.cloudrift.ai",
-    "scraped_at": "2026-05-01T07:42:05.290640"
+    "url": "https://cloudrift.ai",
+    "domain": "cloudrift.ai",
+    "scraped_at": "2026-05-01T15:26:53.987504",
+    "success": true,
+    "title": "CloudRift \u2014 Sovereign AI Platform for Enterprise Deployments",
+    "description": "CloudRift is the sovereign AI platform for enterprise GPU infrastructure. Run LLM inference and AI workloads on-premise or within your security perimeter \u2014 full virtualization, full data sovereignty.",
+    "content_files": {
+      "markdown": "cloudrift_markdown.txt",
+      "html": "cloudrift_html.txt"
+    }
   },
   "deepinfra": {
     "provider": "deepinfra",
-    "url": "https://deepinfra.com/pricing",
+    "url": "https://deepinfra.com/deepseek-ai/DeepSeek-V3-0324",
     "domain": "deepinfra.com",
-    "scraped_at": "2026-05-01T07:42:06.632626"
+    "scraped_at": "2026-05-01T15:27:02.757312",
+    "success": true,
+    "title": "deepseek-ai/DeepSeek-V3-0324 - Demo - DeepInfra",
+    "description": "DeepSeek-V3-0324, a strong Mixture-of-Experts (MoE) language model with 671B total parameters with 37B activated for each token, an improved iteration over DeepSeek-V3.. Try out API on the Web",
+    "content_files": {
+      "markdown": "deepinfra_markdown.txt",
+      "html": "deepinfra_html.txt"
+    }
   },
   "fireworks": {
     "provider": "fireworks",
     "url": "https://fireworks.ai/pricing#serverless-pricing",
     "domain": "fireworks.ai",
-    "scraped_at": "2026-05-01T07:42:07.640811"
+    "scraped_at": "2026-05-01T15:24:45.852147",
+    "success": true,
+    "title": "Fireworks - Pricing",
+    "description": "Choose the plan thats right for you.",
+    "content_files": {
+      "markdown": "fireworks_markdown.txt",
+      "html": "fireworks_html.txt"
+    }
   },
   "groq": {
     "provider": "groq",
     "url": "https://groq.com/pricing",
     "domain": "groq.com",
-    "scraped_at": "2026-05-01T07:42:08.695409"
+    "scraped_at": "2026-05-01T15:24:46.774681",
+    "success": true,
+    "title": "Groq On-Demand Pricing for Tokens-as-a-Service | Groq is fast, low cost inference.",
+    "description": "Groq powers leading openly-available AI models. View the pricing of our core models including GPT-OSS, Kimi K2, Qwen3 32B, and more.",
+    "content_files": {
+      "markdown": "groq_markdown.txt",
+      "html": "groq_html.txt"
+    }
   },
   "cloudrift_ai": {
     "provider": "cloudrift_ai",
-    "url": "https://cloudrift.ai",
+    "url": "https://cloudrift.ai/pricing",
     "domain": "cloudrift.ai",
-    "scraped_at": "2026-05-01T07:42:46.924812"
+    "scraped_at": "2026-05-01T15:25:00.063954",
+    "success": true,
+    "title": "GPU Infrastructure Pricing \u2022 On-Demand & Reserved Compute | CloudRift",
+    "description": "Transparent GPU infrastructure pricing for datacenter operators and enterprises. On-demand and reserved capacity across RTX 4090, RTX 5090, RTX PRO 6000, L40, and more. Calculate costs for sovereign AI deployments.",
+    "content_files": {
+      "markdown": "cloudrift_ai_markdown.txt"
+    }
   }
 }

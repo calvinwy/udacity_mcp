@@ -97,10 +97,14 @@ def scrape_websites(
                 "url": url,
                 "domain": urlparse(url).netloc,
                 "scraped_at": datetime.now().isoformat(),
+                "success": False,
             }
 
-            if scrape_result.get('success', False):
-                
+            # If we got any requested format back, treat it as a success
+            content_found = any(scrape_result.get(format) for format in formats)
+
+            # Return the scraped content in the specified formats and save to files                
+            if content_found:
                 content_files = {} # Initialize the dictionary
                 
                 # Save the scraped content to files based on formats
@@ -119,6 +123,7 @@ def scrape_websites(
                     "content_files": content_files, # Add the mapping to metadata
                     "success": True
                 })
+
                 # Add Successful Scrape to the List
                 successful_scrape.append(provider_name)
 

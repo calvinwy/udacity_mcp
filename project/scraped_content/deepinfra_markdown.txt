@@ -1,0 +1,215 @@
+We use essential cookies to make our site work. With your consent, we may also use non-essential cookies to improve user experience and analyze website traffic…
+
+AcceptReject
+
+[Nemotron 3 Nano Omni](https://deepinfra.com/nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning) — the first multimodal model in the Nemotron 3 family, now on DeepInfra!
+
+[Models](https://deepinfra.com/models)
+
+[Automatic Speech Recognition](https://deepinfra.com/models/automatic-speech-recognition) [Embeddings](https://deepinfra.com/models/embeddings) [Reranker](https://deepinfra.com/models/reranker) [Text Generation](https://deepinfra.com/models/text-generation) [Text To Image](https://deepinfra.com/models/text-to-image) [Text To Speech](https://deepinfra.com/models/text-to-speech) [Text To Video](https://deepinfra.com/models/text-to-video) [Zero Shot Image Classification](https://deepinfra.com/models/zero-shot-image-classification)
+
+[Docs](https://docs.deepinfra.com/)
+
+[Pricing](https://deepinfra.com/pricing)
+
+[GPUs](https://deepinfra.com/gpu-instances)
+
+[Chat](https://deepinfra.com/chat)
+
+[DeepStart](https://deepinfra.com/deepstart)
+
+[DeepCluster](https://deepinfra.com/deepcluster)
+
+[Blog](https://deepinfra.com/blog)
+
+Feedback
+
+[Contact Sales](https://deepinfra.com/contact-sales)
+
+[Log In](https://deepinfra.com/login?from=%2Fdash)
+
+![deepseek-ai logo](https://deepinfra.com/_next/static/media/deepseek.b1ec6c4e.svg)
+
+deepseek-ai/
+
+# DeepSeek-V3-0324
+
+$0.20
+
+in
+
+$0.77
+
+out
+
+$0.135
+
+cached
+
+/ 1M tokens
+
+DeepSeek-V3-0324, a strong Mixture-of-Experts (MoE) language model with 671B total parameters with 37B activated for each token, an improved iteration over DeepSeek-V3.
+
+[Deploy Private Endpoint](https://deepinfra.com/dash/deployments?new=custom-llm&base_model=deepseek-ai%2FDeepSeek-V3-0324)
+
+Public
+
+fp4
+
+163,840
+
+JSON
+
+Function
+
+[Project](https://huggingface.co/deepseek-ai/DeepSeek-V3-0324) [License](https://huggingface.co/datasets/choosealicense/licenses/blob/main/markdown/mit.md) [DeepSeek](https://deepinfra.com/deepseek)
+
+![deepseek-ai/DeepSeek-V3-0324 cover image](https://shared.deepinfra.com/models/deepseek-ai/DeepSeek-V3-0324/cover_image.2132971065034c302886aaa95cfd9661a96989fbe12ec2d93e78ac4c831bf66d.webp)
+
+demo [api](https://deepinfra.com/deepseek-ai/DeepSeek-V3-0324/api) [versions](https://deepinfra.com/deepseek-ai/DeepSeek-V3-0324/versions)
+
+![deepseek-ai/DeepSeek-V3-0324 cover image](https://shared.deepinfra.com/models/deepseek-ai/DeepSeek-V3-0324/cover_image.2132971065034c302886aaa95cfd9661a96989fbe12ec2d93e78ac4c831bf66d.webp)
+
+###### DeepSeek-V3-0324
+
+Ask me anything
+
+0.00s
+
+Send message
+
+Settings
+
+System Prompt
+
+​
+
+Tweak the overall style and tone of the conversation by giving some 'master' instructions. (Default: Be a helpful assistant)
+
+Max New Tokens
+
+​
+
+maximum length of the newly generated generated text.If explicitly set to None it will be the model's max context length minus input length or 16384, whichever is smaller (Default: empty, 1 ≤ max\_new\_tokens ≤ 1000000)
+
+Temperature
+
+​
+
+temperature to use for sampling. 0 means the output is deterministic. Values greater than 1 encourage more diversity (Default: 0.7, 0 ≤ temperature ≤ 1)
+
+Top P
+
+​
+
+Sample from the set of tokens with highest probability such that sum of probabilies is higher than p. Lower values focus on the most probable tokens.Higher values sample more low-probability tokens (Default: 0.9, 0 < top\_p ≤ 1)
+
+Min P
+
+​
+
+Float that represents the minimum probability for a token to be considered, relative to the probability of the most likely token. Must be in \[0, 1\]. Set to 0 to disable this. (Default: 0, 0 ≤ min\_p ≤ 1)
+
+Top K
+
+​
+
+Sample from the best k (number of) tokens. 0 means off (Default: 0, 0 ≤ top\_k < 1000)
+
+Repetition Penalty
+
+​
+
+repetition penalty. Value of 1 means no penalty, values greater than 1 discourage repetition, smaller than 1 encourage repetition. (Default: 1, 0.01 ≤ repetition\_penalty ≤ 5)
+
+###### stop
+
+###### You can add more items with the button on the right
+
+​
+
+Response Format
+
+none
+
+​
+
+How to format the response
+
+Presence Penalty
+
+​
+
+Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics. (Default: 0, -2 ≤ presence\_penalty ≤ 2)
+
+Frequency Penalty
+
+​
+
+Positive values penalize new tokens based on how many times they appear in the text so far, increasing the model's likelihood to talk about new topics. (Default: 0, -2 ≤ frequency\_penalty ≤ 2)
+
+User
+
+​
+
+A unique identifier representing your end-user, which can help monitor and detect abuse. Avoid sending us any identifying information. We recommend hashing user identifiers.. (Default: empty)
+
+Seed
+
+​
+
+Seed for random number generator. If not provided, a random seed is used. Determinism is not guaranteed. (Default: empty, -9223372036854776000 ≤ seed < 18446744073709552000)
+
+Prompt Cache Key
+
+​
+
+A key to identify prompt cache for reuse across requests. If provided, the prompt will be cached and can be reused in subsequent requests with the same key.. (Default: empty)
+
+Reset Defaults
+
+![Footer Logo](https://deepinfra.com/_next/static/media/footer_logo.b3e9d8d3.svg)
+
+![SOC 2 Certified](https://static.sprinto.com/_next/static/images/framework/soc2.png)![ISO 27001 Certified](https://static.sprinto.com/_next/static/images/framework/iso-27001.png)
+
+Have questions or need a custom solution?
+
+[Contact Sales](https://deepinfra.com/contact-sales)
+
+Company
+
+[Pricing](https://deepinfra.com/pricing)
+
+[Docs](https://docs.deepinfra.com/)
+
+[Compare](https://deepinfra.com/compare)
+
+[DeepStart](https://deepinfra.com/deepstart)
+
+[About](https://deepinfra.com/about)
+
+[Careers](https://jobs.gem.com/deep-infra)
+
+[Contact us](https://deepinfra.com/contact-sales)
+
+[Media Center](https://deepinfra.com/media-center)
+
+[Trust Center](https://trust.deepinfra.com/)
+
+[DeepGPT](https://deepgpt.com/)
+
+Latest Models
+
+[deepseek-ai/DeepSeek-V3.2-Exp](https://deepinfra.com/anthropic/claude-3-7-sonnet-latest) [deepseek-ai/DeepSeek-V3.1](https://deepinfra.com/zai-org/GLM-5.1) [zai-org/GLM-5.1](https://deepinfra.com/zai-org/GLM-4.6) [anthropic/claude-3-7-sonnet-latest](https://deepinfra.com/deepseek-ai/DeepSeek-V3.1) [zai-org/GLM-4.6](https://deepinfra.com/deepseek-ai/DeepSeek-V3.2-Exp)
+
+Featured Models
+
+[black-forest-labs/FLUX-2-klein-9b](https://deepinfra.com/black-forest-labs/FLUX-2-klein-9b) [deepseek-ai/DeepSeek-V3.2](https://deepinfra.com/moonshotai/Kimi-K2.6) [zai-org/GLM-5.1](https://deepinfra.com/black-forest-labs/FLUX-2-klein-4b) [google/gemma-4-31B-it](https://deepinfra.com/Qwen/Qwen3-Max-Thinking) [MiniMaxAI/MiniMax-M2.5](https://deepinfra.com/zai-org/GLM-5)
+
+![Built With Love in Palo Alto](https://deepinfra.com/_next/static/media/love.ce60156e.svg)
+
+[visit deepinfra on linkedin](https://linkedin.com/company/deep-infra)[visit deepinfra on X](https://x.com/DeepInfra)[visit deepinfra on github](https://github.com/DeepInfra)[visit deepinfra on discord](https://discord.gg/x88dCvhqYq)
+
+© 2026 Deep Infra. All rights reserved.
+
+[Privacy Policy](https://deepinfra.com/privacy) [Terms of Service](https://deepinfra.com/terms)

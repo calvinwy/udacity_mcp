@@ -1,0 +1,552 @@
+[Skip to main content](https://www.cloudrift.ai/#main-content)
+
+# The Operating System for Sovereign AI Deployments
+
+Manage large-scale GPU infrastructure within your security perimeter: 8+ sovereign AI operators across 5 countries leverage CloudRift platform. Full virtualization. Best-in-class AI inference performance. Enterprise-grade security.
+
+[Request Demo](https://calendly.com/heiko-cloudrift/cloudrift-platform-startups-enterprise) [View Documentation](https://docs.cloudrift.ai/)
+
+![SOC 2 Certified](https://www.cloudrift.ai/logos/soc2-badge.webp)SOC 2 Certified
+
+![NVIDIA Inception Partner](https://www.cloudrift.ai/logos/nvidia-inception.webp)NVIDIA Inception Member
+
+Powering Infrastructure For
+
+![Agile Ascent](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FAgile-Ascent-Logo.webp&w=384&q=75)
+
+![Automatico](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FAutomatico-Logo.webp&w=384&q=75)
+
+![FlyMy](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FFlyMy-Logo.webp&w=384&q=75)
+
+![HyperCloud](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FHyperCloud-Logo.webp&w=384&q=75)
+
+![Katzteleport](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FKatzteleport-Logo.webp&w=384&q=75)
+
+![Mixedbread](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FMixedbread-Logo.webp&w=384&q=75)
+
+![Nebula Block](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FNebula-Block-Logo.webp&w=384&q=75)
+
+![NeuralRack](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2Fneuralrack-new-logo.webp&w=384&q=75)
+
+![Parasail](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FParasail-Logo.webp&w=384&q=75)
+
+![TheStage.ai](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FTheStage-ai-Logo.webp&w=384&q=75)
+
+![Vexpower](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FVexpower.webp&w=384&q=75)
+
+![Yotta Labs](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FYotta-Labs-Logo.webp&w=384&q=75)
+
+![Agile Ascent](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FAgile-Ascent-Logo.webp&w=384&q=75)
+
+![Automatico](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FAutomatico-Logo.webp&w=384&q=75)
+
+![FlyMy](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FFlyMy-Logo.webp&w=384&q=75)
+
+![HyperCloud](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FHyperCloud-Logo.webp&w=384&q=75)
+
+![Katzteleport](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FKatzteleport-Logo.webp&w=384&q=75)
+
+![Mixedbread](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FMixedbread-Logo.webp&w=384&q=75)
+
+![Nebula Block](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FNebula-Block-Logo.webp&w=384&q=75)
+
+![NeuralRack](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2Fneuralrack-new-logo.webp&w=384&q=75)
+
+![Parasail](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FParasail-Logo.webp&w=384&q=75)
+
+![TheStage.ai](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FTheStage-ai-Logo.webp&w=384&q=75)
+
+![Vexpower](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FVexpower.webp&w=384&q=75)
+
+![Yotta Labs](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FYotta-Labs-Logo.webp&w=384&q=75)
+
+Infrastructure Partners
+
+## Trusted by Sovereign AI Providers Worldwide
+
+Our platform powers GPU infrastructure for leading providers across 5 countries. Here are some of our partners.
+
+![HyperCloud logo](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FHyperCloud-Logo.webp&w=384&q=75)
+
+HyperCloud
+
+Central Asia, Europe, Middle East
+
+- Subsidiary of a major telecom provider across Central Asia, Europe, and the Middle East.
+- Multi-region data centers with enterprise-grade GPU capacity.
+- Serving regulated industries including banking and government.
+
+![Kazteleport logo](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FKatzteleport-Logo.webp&w=384&q=75)
+
+Kazteleport
+
+Central Asia
+
+- 25+ years operating telecom and data center infrastructure in Central Asia.
+- 5 TIER III certified data centers with 500+ engineers on staff.
+- Enterprise customers including Halyk Bank, the largest bank in Central Asia.
+
+![Konst logo](https://www.cloudrift.ai/_next/image?url=%2Fcustomer-logos%2FKonst-Logo.webp&w=384&q=75)
+
+Konst
+
+APAC, EU, USA
+
+- 8 data center locations across Taiwan, Japan, Singapore, USA, and Europe.
+- ISO 27001 certified with H100, H200, and RTX 5090 GPU fleet.
+- Turnkey AI data centers delivered in 4–6 months at a third of hyperscaler cost.
+
+Platform
+
+## One Platform, Full Control
+
+Manage GPU clusters, tenants, and workloads across your own data centers — from a single control plane.
+
+![CloudRift](https://www.cloudrift.ai/logos/logo.webp)
+
+My InstancesInferenceReservationsVolumesBillingManage Team
+
+Admin
+
+NodesUsersNetworks
+
+Individual ▾$1,247.50
+
+Admin — Nodes
+
+Node f7a29c01– 8 x MI350X online
+
+Details →
+
+Hardware
+
+7 x MI350X
+
+Memory
+
+2TB
+
+Storage
+
+13TB
+
+Location
+
+EU
+
+IP Address
+
+10.200.44.12
+
+Hostname
+
+gpu-node-eu-01
+
+Version
+
+0.55.5
+
+Instance Type
+
+mi350x-15-250-1000-gv
+
+Node 3e8b14d7– 8 x H100 SXM online
+
+Details →
+
+Hardware
+
+5 x H100 SXM
+
+Memory
+
+2TB
+
+Storage
+
+7TB
+
+Location
+
+US
+
+IP Address
+
+10.200.44.28
+
+Hostname
+
+gpu-node-us-03
+
+Version
+
+0.55.5
+
+Instance Type
+
+h100-sxm-64-512-7000
+
+Full visibility into your GPU fleet — hardware, utilization, and status at a glance.
+
+### Control Plane
+
+Manage your entire GPU fleet, tenants, and workloads from a single dashboard — across all sites.
+
+### Full Virtualization
+
+VMs, containers, and bare metal. Choose the isolation level each workload requires — from bare-metal control to lightweight containers.
+
+### SKU & Pricing Control
+
+Define GPU offerings, set pricing tiers, and configure placement rules. Full control over your brand and commercial terms.
+
+### Usage & Utilization
+
+Per-user, per-GPU transparency. Track utilization, costs, and billing in real time across your entire fleet.
+
+### Multi-Site Management
+
+Federate workloads across geographies. One control plane, many data centers, unified monitoring.
+
+### White-Label Console
+
+Your customers use your brand. Embed provisioning tools into your portal or use our white-label console.
+
+Deep Visibility
+
+## Real-Time Insight Across Your Infrastructure
+
+Fleet Management
+
+### Monitor Every Node in Your Fleet
+
+Track users, GPU allocation, and system health across all nodes. Real-time visibility into temperature, utilization, memory, and power draw.
+
+![CloudRift](https://www.cloudrift.ai/logos/logo.webp)
+
+My Instances
+
+Inference
+
+Reservations
+
+Volumes
+
+Billing
+
+Manage Team
+
+Admin
+
+Nodes
+
+Users
+
+Networks
+
+Individual ▾$450.77
+
+Node Status online
+
+Schedule for MaintenanceSoft Drain Node ↓
+
+Current UsersInstance InfoAccess/ConnectionHardware Information
+
+| Username | Instance ID | Type | Model | vRAM | CPU | RAM |
+| --- | --- | --- | --- | --- | --- | --- |
+| alex.m | inst-4892 | GPU | 2x NVIDIA H100 SXM | 160Gi | 128 vCPU | 512Gi |
+| skenio | inst-6901 | GPU | 1x NVIDIA H100 SXM | 80Gi | 64 vCPU | 256Gi |
+| dev-team | inst-4915 | GPU | 4x NVIDIA H100 SXM | 320Gi | 256 vCPU | 1Ti |
+
+System HealthGPUsCPUsMemoryStorage
+
+| GPU | Model | Temperature | GPU Utilization | Memory Usage | Power |
+| --- | --- | --- | --- | --- | --- |
+| GPU-001 | H100 SXM | 62°C | 87% | 68.2 / 80.0 GiB | 580W / 700W |
+| GPU-002 | H100 SXM | 58°C | 72% | 54.1 / 80.0 GiB | 520W / 700W |
+| GPU-003 | H100 SXM | 65°C | 94% | 76.8 / 80.0 GiB | 640W / 700W |
+| GPU-004 | H100 SXM | 55°C | 31% | 12.4 / 80.0 GiB | 280W / 700W |
+| GPU-005 | H100 SXM | 60°C | 68% | 48.0 / 80.0 GiB | 490W / 700W |
+
++2 more GPUs
+
+Hardware Reporting
+
+### Instance-Level GPU Telemetry
+
+Drill into any instance to see per-GPU utilization, memory usage, thermals, power consumption, and clock speeds. Direct Grafana integration for deep analysis.
+
+Individual ▾$450.77
+
+Node Management›Node 3982c›inst-4892 Utilization
+
+Inst-4892 Utilization↗ View in Grafana
+
+Node: Node 3982cInstance: inst-4892User: alex.mGPU Model: NVIDIA H100 SXM
+
+| GPU | GPU Utilization | Memory Utilization | Memory Usage | Temperature | Power | Clock Speed |
+| --- | --- | --- | --- | --- | --- | --- |
+| GPU 0 | 87% | 85% | 68.2 / 80.0 GiB | 62 °C | 580 W / 700 W | 1980 MHz |
+| GPU 1 | 72% | 67% | 54.1 / 80.0 GiB | 58 °C | 520 W / 700 W | 1935 MHz |
+
+User & Spending
+
+### Tenant Management at Scale
+
+Full visibility into every tenant — balances, active instances, spending history, and credit limits. Manage users and teams from a single dashboard.
+
+![CloudRift](https://www.cloudrift.ai/logos/logo.webp)
+
+My Instances
+
+Inference
+
+Reservations
+
+Volumes
+
+Billing
+
+Manage Team
+
+Admin
+
+Nodes
+
+Users
+
+Networks
+
+Individual ▾$450.77
+
+User ManagementUsersTeams
+
+Search users...\+ Add User
+
+| User | Balance | Credit Limit | Instances | Last Login | Registered | Total Spent |
+| --- | --- | --- | --- | --- | --- | --- |
+| alex.m<br>alex.m@acme.ai | $38.65 | Prepaid only | 2 | Mar 10, 2026 | Sep 1, 2025 | $4,046.34 |
+| mlops-team<br>ops@infraco.net | $3,895.53 | Prepaid only | 2 | Mar 12, 2026 | Jul 9, 2024 | $1,704.46 |
+| skenio<br>deploy@skenio.dev | $278.83 | Prepaid only | 1 | — | Sep 25, 2025 | $781.16 |
+| jordan.w<br>jw@startup.co | $10.94 | Prepaid only | 1 | Mar 13, 2026 | Nov 27, 2025 | $229.06 |
+| research-lab<br>gpu@research.io | $777.49 | Prepaid only | 1 | Mar 15, 2026 | Mar 12, 2026 | $222.50 |
+| dev-bench<br>bench@devtools.ai | $45.24 | Prepaid only | 1 | — | Jan 27, 2026 | $114.76 |
+| sarah.k<br>sk@datacorp.io | $217.92 | Prepaid only | 1 | — | Feb 21, 2026 | $82.08 |
+
++3 more users
+
+No Vendor Lock-In
+
+## Hardware Agnostic by Design
+
+CloudRift abstracts the hardware layer so you can choose the GPUs that fit your workloads and budget — not the ones a vendor requires.
+
+### NVIDIA AI Enterprise
+
+Full support for MIG, vGPU, and the NVIDIA virtualization stack. Certified enterprise workloads with proper isolation.
+
+### AMD GPU Support
+
+Run inference and training on AMD GPUs with ROCm. No NVIDIA lock-in required — lower cost, same control.
+
+### Open-Source Virtualization
+
+Built on QEMU/KVM, open container runtimes, and open networking. No proprietary dependencies, no licensing surprises.
+
+Developer Tools
+
+## Ship Faster on GPU Infrastructure
+
+Instant GPU access, pre-built ML environments, persistent storage, and full API control — from experiment to production.
+
+### Real-Time Monitoring
+
+Track GPU instances, usage, and costs from a single dashboard across all providers.
+
+### Recipes & Templates
+
+Pre-configured environments for common AI workloads. One-click setup for PyTorch, vLLM, and more.
+
+On-Demand Compute
+
+### Launch GPU Instances in Minutes
+
+Deploy VMs, containers, or bare metal on demand. No long-term commitments required.
+
+[Rent GPUs by the hour →](https://www.cloudrift.ai/gpu-rentals)
+
+H100NVIDIA
+
+$2.50/hr
+
+80GB VRAMup to 8x
+
+ca-central-kz — KZ
+
+RTX PRO 6000NVIDIA
+
+$1.20/hr
+
+48GB VRAMup to 8x
+
+us-east-fl-nr — USA
+
+L40SNVIDIA
+
+$1.80/hr
+
+48GB VRAMup to 8x
+
+us-east-fl-nr — USA
+
+H200NVIDIA
+
+$3.20/hr
+
+141GB VRAMup to 8x
+
+ca-central-kz — KZ
+
+B200NVIDIA
+
+$4.90/hr
+
+192GB VRAMup to 8x
+
+us-east-nc-nr — USA
+
+MI350XAMD
+
+$3.50/hr
+
+288GB VRAMup to 8x
+
+eu-west-it — IT
+
+### Persistent Storage
+
+Your data persists across sessions. Attach volumes to any instance and pick up where you left off.
+
+### Full API Access
+
+Programmatic control over your infrastructure. Automate deployments and integrate with CI/CD.
+
+LLM-as-a-Service
+
+## Inference on Your Terms
+
+Serve open-weight models on your own infrastructure with built-in inference endpoints, autoscaling, and pay-per-token pricing.
+
+Pay-per-token
+
+Only pay for what you use — no idle GPU costs for inference workloads.
+
+Popular Models
+
+Llama, DeepSeek, GLM, Kimi, Qwen, Mistral — optimized and ready to serve out of the box.
+
+OpenAI-compatible API
+
+Drop-in replacement — switch your base URL and keep your existing code.
+
+[Explore Enterprise LLM Inference](https://www.cloudrift.ai/inference-for-datacenters)
+
+API Identifier
+
+qwen/qwen3.5-35b-a3b⧉
+
+PythonTypeScriptcURL
+
+```
+import openai
+
+client = openai.OpenAI(
+    api_key="YOUR_RIFT_API_KEY",
+    base_url="https://inference.cloudrift.ai/v1"
+)
+
+completion = client.chat.completions.create(
+    model="qwen/qwen3.5-35b-a3b",
+    messages=[\
+        {"role": "user", "content": "Hello"}\
+    ],
+    stream=True
+)
+
+for chunk in completion:
+    print(chunk.choices[0].delta.content or "", end="")
+```
+
+Model Specs
+
+ProviderQwen
+
+Parameters35B (3B active)
+
+Context256K
+
+ArchitectureMoE
+
+Pricing
+
+Per million tokens
+
+Input Price$0.16
+
+Output Price$1.30
+
+Data Privacy
+
+## Your Data Never Leaves Your Infrastructure
+
+Full data sovereignty by design. Every workload runs on your hardware, in your jurisdiction, under your control.
+
+### SOC 2 Certified
+
+Independently audited security controls. Your customers get the compliance documentation they need.
+
+### End-to-End Encryption
+
+All data encrypted at rest and in transit. Zero-trust architecture with no exceptions.
+
+### Full Tenant Isolation
+
+Dedicated resources per customer — no shared infrastructure, no noisy neighbors, no data leakage between tenants.
+
+### Data Residency & Compliance
+
+Keep all data and compute within national borders. Meet GDPR, data sovereignty, and industry-specific requirements.
+
+### Full Audit Logging
+
+Every action tracked and logged. Complete visibility into who accessed what, when, and from where.
+
+### On-Premise Control
+
+Everything runs on your hardware, in your jurisdiction. No data ever passes through third-party clouds.
+
+Proven Credibility
+
+## Built by Experts, Recognized by Industry
+
+Our founding team brings deep experience from major tech and gaming companies.
+
+![Apple](https://www.cloudrift.ai/_next/image?url=%2Fcompany-logos%2Fapple-logo.webp&w=96&q=75)
+
+![Roblox](https://www.cloudrift.ai/_next/image?url=%2Fcompany-logos%2Froblox-logo.webp&w=96&q=75)
+
+![Ubisoft](https://www.cloudrift.ai/_next/image?url=%2Fcompany-logos%2Fubisoft-logo.webp&w=96&q=75)
+
+![HP](https://www.cloudrift.ai/_next/image?url=%2Fcompany-logos%2Fhp-logo.webp&w=96&q=75)
+
+CloudRift Has Been Featured In
+
+[![Tom's Hardware](https://www.cloudrift.ai/_next/image?url=%2Flogos%2Ftoms-hardware-logo.webp&w=384&q=75)](https://www.tomshardware.com/pc-components/gpus/rtx-5090-pro-6000-bug-forces-host-reboot)[![TechPowerUp](https://www.cloudrift.ai/_next/image?url=%2Flogos%2Ftechpowerup-logo.webp&w=384&q=75)](https://www.techpowerup.com/340754/nvidia-geforce-rtx-5090-and-rtx-6000-pro-plagued-by-the-virtualization-reset-bug)[![VideoCardz](https://www.cloudrift.ai/_next/image?url=%2Flogos%2Fvideocardz-logo.webp&w=384&q=75)](https://videocardz.com/newz/nvidia-rtx-5090-and-rtx-pro-6000-reportedly-hit-by-virtualization-reset-issue-1000-bounty-offered)[![Hot Hardware](https://www.cloudrift.ai/_next/image?url=%2Flogos%2Fhothardware-logo.webp&w=384&q=75)](https://hothardware.com/news/1000-bug-bounty-geforce-rtx-5090-rtx-pro-6000-reset-issue)
+
+Deploy in minutes
+
+## Ready to Take Control of Your GPU Infrastructure?
+
+Talk to our team about deploying CloudRift in your data centers.
+
+[Request Demo](https://calendly.com/heiko-cloudrift/cloudrift-platform-startups-enterprise) [View Documentation](https://docs.cloudrift.ai/)
